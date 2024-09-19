@@ -1,6 +1,6 @@
 # FastAPI Application
 
-A simple To-Do list application built with FastAPI, allowing users to create, read, update, and delete tasks.
+A simple To-Do list application built with FastAPI, allowing users to create, read, update, and delete tasks. Running on a docker container.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ A simple To-Do list application built with FastAPI, allowing users to create, re
 
 ### Step 1: Configure ENV variables
 
-Create a file ".env" with the following variables:
+Create a file ".env" (in the root directory, not inside "todo-list-app") with the following variables:
 
 ```bash
 app_url=localhost (the app domain, optional and defaults to localhost)
@@ -112,7 +112,7 @@ The above will generate a new token.
 
 The daily reminder feature sends an automated email to users who have the `daily_reminder` option enabled. It aggregates all incomplete tasks for each user and sends a summary in the email body. The reminders are triggered via a background scheduler that runs at a configured interval. The scheduler calls the `/send_reminders` API, which queries the database for users with pending tasks and sends the appropriate emails.
 
-## Sample Requests (Curl)
+## Sample Requests (using curl)
 
 Register a new user:
 ```bash
@@ -157,7 +157,7 @@ Unit tests were added to the project. Also, linter checks might be performed by 
 
 ### Running Linter Checks
 
-To run linter checks, follow these steps:
+To run linter checks, follow these steps (inside the todo-list-app directory):
 
 1.  **Install dependencies**:
 

@@ -45,17 +45,17 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./todo-list-app/Dockerfile
     depends_on:
       postgres:
         condition: service_healthy
       postgres-test:
         condition: service_healthy
     command: >
-     bash -c "poetry install &&
-              poetry run alembic upgrade head &&
-              poetry run pytest &&
-              poetry run uvicorn app:app --host 0.0.0.0 --port 8000"
+     bash -c "source /app/.venv/bin/activate && 
+              alembic upgrade head &&
+              pytest &&
+              uvicorn app:app --host 0.0.0.0 --port 8000"
     ports:
       - "8000:8000"
     networks:
